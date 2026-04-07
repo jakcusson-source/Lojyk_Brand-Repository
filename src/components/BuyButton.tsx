@@ -1,6 +1,6 @@
 import { useCart } from '@/store/cart'
 
-export default function BuyButton() {
+export default function BuyButton({
   productId,
   className = '',
 }: {
@@ -8,7 +8,6 @@ export default function BuyButton() {
   className?: string
 }) {
   const { addItem } = useCart()
-
   return (
     <button
       onClick={() => addItem(productId)}
