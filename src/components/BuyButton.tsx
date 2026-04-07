@@ -1,6 +1,6 @@
 import { useCart } from '@/store/cart'
 
-export function BuyButton({
+export default function BuyButton() {
   productId,
   className = '',
 }: {
