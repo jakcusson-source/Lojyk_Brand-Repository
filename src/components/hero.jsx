@@ -13,7 +13,7 @@ export default function Hero() {
       alignItems: "center",
       textAlign: "center"
     }}>
-      <h1 style={{fontSize: "4rem", letterSpacing: "0.2em"}}>LOJYK TEST1</h1>
+      <h1 style={{fontSize: "4rem", letterSpacing: "0.2em"}}>LOJYK</h1>
       <p style={{fontSize: "1.5rem", margin: "20px 0"}}>Streetwear minimaliste & audacieux</p>
       <BuyButton text="SHOP NOW" style={{padding: "15px 30px", fontSize: "1rem"}} />
     </section>
