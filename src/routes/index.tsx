@@ -1,6 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import Products from "../Products"
-import Hero from "../hero"
+import Products from "../components/Products"
+import Hero from "../components/hero"
 import { useCart } from '@/store/cart'
 
 export const Route = createFileRoute('/')({
