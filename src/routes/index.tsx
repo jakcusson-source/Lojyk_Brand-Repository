@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import products from '@/data/products'
+import Products from "../Products"
+import Hero from "../hero"
 import { useCart } from '@/store/cart'
 
 export const Route = createFileRoute('/')({
@@ -9,27 +10,13 @@ export const Route = createFileRoute('/')({
 function Home() {
   const { addItem } = useCart()
 
-  return (
+  return ( <main>
+      <Hero />
+      <Products />
+    </main>
+  )
+}
     <div>
-      {/* Hero */}
-      <section className="relative min-h-[92vh] flex flex-col items-center justify-center bg-black text-white overflow-hidden px-6">
-        <div className="text-center">
-          <p className="text-[10px] tracking-[0.5em] uppercase text-gray-400 mb-6">
-            New Season — SS25
-          </p>
-          <h1 className="font-display text-[min(28vw,280px)] leading-none tracking-widest select-none">
-            LOJYK
-          </h1>
-          <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mt-6 max-w-xs mx-auto">
-            Minimal. Editorial. Uncompromising.
-          </p>
-          <Link
-            to="/"
-            className="inline-block mt-12 border border-white text-white text-[10px] tracking-[0.3em] uppercase px-10 py-4 hover:bg-white hover:text-black transition-colors"
-          >
-            Shop Now
-          </Link>
-        </div>
         {/* Scroll hint */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
           <div className="w-px h-12 bg-gray-600" />
