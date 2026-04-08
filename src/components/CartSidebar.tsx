@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import products from '@/data/products'
 import { createCheckoutSession, getStripeEnabled } from '@/lib/stripe'
 
-export default function CartSidebar(props) {
+export default CartSidebar{
   const { items, isOpen, closeCart, removeItem, updateQuantity, totalItems } = useCart()
   const [loading, setLoading] = useState(false)
   const [stripeEnabled, setStripeEnabled] = useState<boolean | null>(null)
