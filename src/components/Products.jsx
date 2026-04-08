@@ -2,7 +2,7 @@ import React from "react";
 import BuyButton from "./BuyButton";
 
 const products = [
-  { id: 1, name: "T-shirt LOJYK", price: "$35", image: file:///C:/Users/User/OneDrive/Pictures/lojyk/Front.png },
+  { id: 1, name: "T-shirt LOJYK", price: "$20", image: file:///C:/Users/User/OneDrive/Pictures/lojyk/Front.png },
   { id: 2, name: "Hoodie LOJYK", price: "$60", image: "link-to-image2.jpg" },
   { id: 3, name: "Casquette LOJYK", price: "$25", image: "link-to-image3.jpg" },
 ];
