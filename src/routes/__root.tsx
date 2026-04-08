@@ -1,6 +1,6 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 import { CartProvider } from '@/store/cart'
-import { Nav } from '@/components/Nav'
+import  Nav  from '@/components/Nav'
 import { CartSidebar } from '@/components/CartSidebar'
 import { Footer } from '@/components/Footer'
 import '../styles.css'
