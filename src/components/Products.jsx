@@ -17,7 +17,11 @@ export default function Products() {
             <img src={product.image} alt={product.name} style={{width: "100%", borderRadius: "10px"}} />
             <p style={{margin: "15px 0 5px"}}>{product.name}</p>
             <p style={{margin: "5px 0 15px", fontWeight: "bold"}}>{product.price}</p>
-            <BuyButton text="Acheter" />
+            <BuyButton
+  productId={product.id}
+  name={product.name}
+  price={product.price}
+/>
           </div>
         ))}
       </div>
