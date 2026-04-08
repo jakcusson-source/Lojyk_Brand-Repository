@@ -1,55 +1,87 @@
-import { Link } from '@tanstack/react-router'
-import { useCart } from '@/store/cart'
+import { useState } from "react"
+import { useCart } from "@/store/cart"
 
-export function Nav() {
-  const { totalItems, openCart } = useCart()
+export default function Nav() {
+  const { items, removeItem } = useCart()
+  const [open, setOpen] = useState(false)
+
+  const total = items.reduce((acc, item) => acc + item.price, 0)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-30 bg-white border-b border-black">
-      <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-        {/* Left nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          <Link
-            to="/"
-            className="text-[10px] tracking-[0.25em] uppercase font-medium hover:opacity-50 transition-opacity"
-          >
-            Shop
-          </Link>
-        </nav>
+    <>
+      {/* NAVBAR */}
+      <nav className="flex justify-between items-center p-6 border-b">
 
-        {/* Logo */}
-        <Link
-          to="/"
-          className="font-display text-2xl tracking-widest absolute left-1/2 -translate-x-1/2"
-        >
-          LOJYK
-        </Link>
+        <h1 className="text-xl font-bold">LOJYK</h1>
 
-        {/* Right nav */}
-        <div className="flex items-center gap-6">
+        <div className="flex gap-6 items-center">
+
+          <a href="/" className="hover:opacity-70">
+            Home
+          </a>
+
           <button
-            onClick={openCart}
-            className="flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase font-medium hover:opacity-50 transition-opacity"
+            onClick={() => setOpen(true)}
+            className="relative"
           >
-            <CartIcon />
-            {totalItems > 0 && (
-              <span className="bg-black text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
+            Cart ({items.length})
           </button>
-        </div>
-      </div>
-    </header>
-  )
-}
 
-function CartIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-      <line x1="3" y1="6" x2="21" y2="6" />
-      <path d="M16 10a4 4 0 01-8 0" />
-    </svg>
+        </div>
+      </nav>
+
+      {/* CART SIDEBAR */}
+      {open && (
+        <div className="fixed inset-0 bg-black/40 flex justify-end">
+
+          <div className="bg-white w-96 h-full p-6">
+
+            <div className="flex justify-between mb-6">
+              <h2 className="text-xl font-bold">Your Cart</h2>
+
+              <button onClick={() => setOpen(false)}>
+                Close
+              </button>
+            </div>
+
+            {items.length === 0 && (
+              <p>Your cart is empty</p>
+            )}
+
+            {items.map(item => (
+              <div
+                key={item.id}
+                className="flex justify-between mb-4"
+              >
+                <div>
+                  <p>{item.name}</p>
+                  <p>${item.price}</p>
+                </div>
+
+                <button
+                  onClick={() => removeItem(item.id)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+
+            <div className="border-t pt-4 mt-6">
+
+              <p className="font-bold">
+                Total: ${total}
+              </p>
+
+              <button className="mt-4 w-full bg-black text-white p-3">
+                Checkout
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      )}
+    </>
   )
 }
